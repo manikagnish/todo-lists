@@ -36,8 +36,7 @@ hid.splice(0, 3).forEach((elem) => elem.classList.remove("hidden"));
 
 // function declarations
 function showCard(list, arr, item) {
-  list.innerHTML += `
-          <li class="main__task-card list-item hidden">
+  list.innerHTML += `     <li class="main__task-card list-item ">
           <div class="task-card__header">
           <h2 class="task-card__title">${arr[item].title}</h2>
           <button class="btn btn-success done-btn" onClick="con()" >Done 👍</button>
