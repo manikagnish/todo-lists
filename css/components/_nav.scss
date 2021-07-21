@@ -1,0 +1,12 @@
+.nav {
+  background-color: var(--clr-primary);
+  padding: 1rem 0;
+
+  .logo {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--clr-white);
+    text-decoration: none;
+  }
+}

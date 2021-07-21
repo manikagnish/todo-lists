@@ -1,0 +1,70 @@
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--clr-footer);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 2rem 0;
+    width: 100%;
+
+    @include phone-only {
+      flex-direction: column;
+    }
+  }
+
+  &__left {
+    display: flex;
+
+    span {
+      font-size: 2.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding-right: 1.3rem;
+      border-right: 1px solid var(--clr-grey-alpha);
+      margin-right: 1.3rem;
+    }
+
+    @include phone-only {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    list-style-type: none;
+
+    &__item {
+      margin: 5px 1rem;
+    }
+
+    &__link {
+      color: white;
+      font-size: 2rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  small:nth-of-type(2)::after {
+    content: "Manik Agnish";
+    color: var(--clr-danger);
+  }
+
+  .top {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+}

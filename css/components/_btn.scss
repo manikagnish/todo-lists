@@ -1,0 +1,37 @@
+.btn {
+  padding: 1rem 2rem;
+  border: 0;
+  border-radius: 3px;
+  color: var(--clr-primary-dark);
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all ease 0.3s;
+  &:active {
+    transform: translateY(2px);
+  }
+
+  &--success {
+    background-color: var(--clr-success);
+    transition: all ease 0.4s;
+    border: 1px solid var(--clr-success) !important;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: var(--clr-success);
+    }
+  }
+  &--danger {
+    background-color: var(--clr--danger);
+  }
+  &--outline {
+    border: 1px solid #fff !important;
+    background-color: transparent;
+    color: var(--clr-white);
+    transition: all ease 0.3s;
+
+    &:hover {
+      background-color: var(--clr-danger);
+    }
+  }
+}

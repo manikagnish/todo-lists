@@ -1,0 +1,24 @@
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  padding: 1rem 0;
+
+  li {
+    margin-right: 1rem;
+
+    &:not(:last-child)::after {
+      content: "/";
+      margin-left: 1rem;
+      color: var(--clr-grey);
+    }
+    a {
+      text-decoration: none;
+      color: var(--clr-grey);
+    }
+  }
+}
+
+.active {
+  font-weight: 700 !important;
+  color: var(--clr-black) !important;
+}

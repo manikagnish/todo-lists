@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="index.js" defer></script>
+    <title>Lists</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <a href="#" class="logo ml-lg"><i class="far fa-file-alt"></i> Lists</a>
+      </nav>
+      <ul class="breadcrumb ml-lg">
+        <li><a href="#" class="active" id="todo-list">Todo</a></li>
+        <li><a href="#" id="done-list">Done</a></li>
+      </ul>
+    </header>
+
+    <main class="main mr-lg ml-lg">
+      <button class="main__add-task" id="add-task-btn">Add task</button>
+
+      <div
+        class="main__task-card main__task-card--primary hidden"
+        id="add-task-card"
+      >
+        <div class="main__input-container">
+          <label for="title" class="main__label">Title </label>
+          <input type="text" name="title" class="main__input" id="title" />
+        </div>
+        <div class="main__input-container">
+          <label for="description" class="main__label">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="5"
+            cols="50"
+            class="main__input"
+          >
+          </textarea>
+        </div>
+        <div class="main__btn-container">
+          <button class="btn btn--success" id="add-btn">Add Task</button>
+          <button class="btn btn--outline" id="cancel-btn">Cancel</button>
+        </div>
+      </div>
+
+      <ul class="main__task-list"></ul>
+
+      <ul class="main__task-list--done"></ul>
+
+      <div class="main__load-container invisible">
+        <button class="btn btn--success main__load" id="load-more">
+          Load more
+        </button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__container ml-lg mr-lg">
+        <div class="footer__left">
+          <span><i class="far fa-file-alt"></i> Lists</span>
+          <div class="footer__info">
+            <small>&copy; 2021 Something</small>
+            <small>Made by </small>
+          </div>
+        </div>
+
+        <ul class="social-icons">
+          <li class="social-icons__item">
+            <a href="#" target="blank" class="social-icons__link">
+              <i class="fab fa-facebook social-icons__icon"></i>
+            </a>
+          </li>
+          <li class="social-icons__item">
+            <a href="#" target="blank" class="social-icons__link">
+              <i class="fab fa-instagram social-icons__icone"></i>
+            </a>
+          </li>
+          <li class="social-icons__item">
+            <a href="#" target="blank" class="social-icons__link">
+              <i class="fab fa-twitter" social-icons__icon></i>
+            </a>
+          </li>
+          <li class="social-icons__item">
+            <a href="#" target="blank" class="social-icons__link">
+              <i class="fab fa-dribbble" social-icons__icon></i>
+            </a>
+          </li>
+          <li class="social-icons__item">
+            <a href="#" target="blank" class="social-icons__link">
+              <i class="fab fa-behance" social-icons__icon></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+:root {
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-black: hsl(0, 0%, 3%);
+
+  --clr-primary: hsl(180, 82%, 41%);
+  --clr-primary-light: hsl(180, 82%, 61%);
+  --clr-primary-saturated: hsla(180, 40%, 41%, 0.603);
+  --clr-primary-dark: hsl(180, 55%, 13%);
+
+  --clr-secondary: hsl(19, 40%, 83%);
+  --clr-secondary-dark: hsl(19, 43%, 27%);
+
+  --clr-success: hsl(152, 64%, 63%);
+  --clr-danger: hsl(0, 48%, 55%);
+
+  --clr-grey: hsl(120, 2%, 63%);
+  --clr-grey-dark: hsl(120, 2%, 53%);
+  --clr-grey-alpha: hsla(120, 2%, 63%, 0.5);
+  --clr-grey-light: hsl(120, 2%, 88%);
+
+  --clr-footer: hsl(235, 10%, 11%);
+}
