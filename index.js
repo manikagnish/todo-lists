@@ -1,6 +1,11 @@
 "use strict";
 
-// variables
+// selectors
+let count = -1;
+let incrementer = 0;
+let todo = [];
+let done = [{ title: "done title", description: "done description" }];
+
 const addTaskBtn = document.getElementById("add-task-btn");
 const addTaskCard = document.getElementById("add-task-card");
 const cancelBtn = document.getElementById("cancel-btn");
@@ -12,13 +17,12 @@ const taskList = document.querySelector(".main__task-list");
 const taskListDone = document.querySelector(".main__task-list--done");
 const title = document.getElementById("title");
 const description = document.getElementById("description");
-const deleteBtn = document.querySelectorAll(".delete-btn");
 const doneList = document.getElementById("done-list");
 const todoList = document.getElementById("todo-list");
 const loadMoreContainer = document.querySelector(".main__load-container");
-
-let todo = [];
-let done = [{ title: "done title", description: "done description" }];
+const doneBtn = document.querySelector("#done-btn");
+const deleteBtn = document.querySelector("#delete-btn");
+const mainTaskCard = document.querySelector(`#main-task-card-${count}`);
 
 todo = JSON.parse(localStorage.getItem("todo") || "[]");
 for (let i = 0; i < todo.length; i++) {
@@ -36,11 +40,13 @@ hid.splice(0, 3).forEach((elem) => elem.classList.remove("hidden"));
 
 // function declarations
 function showCard(list, arr, item) {
-  list.innerHTML += `     <li class="main__task-card list-item ">
+  count++;
+  list.innerHTML += `    
+          <li class="main__task-card list-item" id="main-task-card-${count}">
           <div class="task-card__header">
           <h2 class="task-card__title">${arr[item].title}</h2>
-          <button class="btn btn-success done-btn" onClick="con()" >Done 👍</button>
-          <button class="btn btn-danger delete-btn" >
+          <button class="btn btn-success " id="done-btn-${count}" >Done 👍</button>
+          <button class="btn btn-danger " id="delete-btn-${count}" >
           Delete <i class="fa fa-trash"></i>
           </button>
           </div>
@@ -94,7 +100,14 @@ cancelBtn.addEventListener("click", () => {
 });
 
 addBtn.addEventListener("click", () => {
-  todo.push({ title: title.value, description: description.value });
+  todo.push({
+    title: title.value,
+    description: description.value,
+    done: false,
+    delete: false,
+    index: incrementer,
+  });
+  incrementer++;
   localStorage.setItem("todo", JSON.stringify(todo));
   showCard(taskList, todo, todo.length - 1);
   console.log("runnig yet");
@@ -113,5 +126,23 @@ loadMore.addEventListener("click", function (e) {
 
   if (hid.length == 0) {
     loadMore.classList.add("invisible");
+  }
+});
+
+document.addEventListener("click", function (e) {
+  for (let i = 0; i <= count; i++) {
+    if (e.target && e.target.id == `delete-btn-${i}`) {
+      todo.splice(i - 1, i);
+      e.target.parentNode.parentElement.remove();
+      localStorage.removeItem("todo");
+    }
+    if (e.target && e.target.id == `done-btn-${i}`) {
+      todo.splice(i - 1, i);
+      e.target.parentNode.parentElement.remove();
+      localStorage.removeItem("todo");
+      console.log(todo);
+      console.log(todo[i]);
+      done.push(todo[i]);
+    }
   }
 });
