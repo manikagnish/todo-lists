@@ -134,15 +134,16 @@ document.addEventListener("click", function (e) {
     if (e.target && e.target.id == `delete-btn-${i}`) {
       todo.splice(i - 1, i);
       e.target.parentNode.parentElement.remove();
-      localStorage.removeItem("todo");
+      todo.splice(i, 1);
+      localStorage.setItem("todo", JSON.stringify(todo));
     }
     if (e.target && e.target.id == `done-btn-${i}`) {
       todo.splice(i - 1, i);
       e.target.parentNode.parentElement.remove();
-      localStorage.removeItem("todo");
-      console.log(todo);
-      console.log(todo[i]);
-      done.push(todo[i]);
+      todo.splice(i, 1);
+      localStorage.setItem("todo", JSON.stringify(todo));
+
+      done.push(todo[i].title);
     }
   }
 });
