@@ -4,7 +4,7 @@
 let count = -1;
 let incrementer = 0;
 let todo = [];
-let done = [{ title: "done title", description: "done description" }];
+let done = [];
 
 const addTaskBtn = document.getElementById("add-task-btn");
 const addTaskCard = document.getElementById("add-task-card");
@@ -28,6 +28,7 @@ todo = JSON.parse(localStorage.getItem("todo") || "[]");
 for (let i = 0; i < todo.length; i++) {
   showCard(taskList, todo, i);
 }
+done = JSON.parse(localStorage.getItem("done") || "[]");
 
 if (taskList.getElementsByTagName("li").length > 3) {
   loadMoreContainer.classList.remove("invisible");
@@ -76,6 +77,7 @@ doneList.addEventListener("click", () => {
   if (taskListDone.getElementsByTagName("li").length < 3) {
     loadMoreContainer.classList.add("invisible");
   }
+  localStorage.setItem("done", JSON.stringify(done));
 });
 
 todoList.addEventListener("click", () => {
@@ -132,18 +134,23 @@ loadMore.addEventListener("click", function (e) {
 document.addEventListener("click", function (e) {
   for (let i = 0; i <= count; i++) {
     if (e.target && e.target.id == `delete-btn-${i}`) {
-      todo.splice(i - 1, i);
+      // todo.splice(i - 1, i);
       e.target.parentNode.parentElement.remove();
       todo.splice(i, 1);
+      done.splice(i, 1);
       localStorage.setItem("todo", JSON.stringify(todo));
+      localStorage.setItem("done", JSON.stringify(done));
     }
     if (e.target && e.target.id == `done-btn-${i}`) {
-      todo.splice(i - 1, i);
       e.target.parentNode.parentElement.remove();
+      console.log(todo);
+      done.push(todo[i]);
+      todo.splice(i - 1, i);
+      localStorage.setItem("done", JSON.stringify(done));
       todo.splice(i, 1);
       localStorage.setItem("todo", JSON.stringify(todo));
-
-      done.push(todo[i].title);
+      console.log(done);
+      console.log(todo);
     }
   }
 });
