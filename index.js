@@ -137,7 +137,7 @@ document.addEventListener("click", function (e) {
       // todo.splice(i - 1, i);
       e.target.parentNode.parentElement.remove();
       todo.splice(i, 1);
-      done.splice(i, 1);
+      done.splice(i - 1, 1);
       localStorage.setItem("todo", JSON.stringify(todo));
       localStorage.setItem("done", JSON.stringify(done));
     }
