@@ -42,6 +42,7 @@ hid.splice(0, 3).forEach((elem) => elem.classList.remove("hidden"));
 // function declarations
 function showCard(list, arr, item) {
   count++;
+  console.log(count);
   list.innerHTML += `    
           <li class="main__task-card list-item" id="main-task-card-${count}">
           <div class="task-card__header">
@@ -58,8 +59,8 @@ function showCard(list, arr, item) {
           `;
 }
 
-function addDoneTask() {
-  for (let i = 0; i < done.length; i++) {
+function addDoneTask(arr) {
+  for (let i = 0; i < arr.length; i++) {
     showCard(taskListDone, done, i);
   }
 }
@@ -72,7 +73,7 @@ doneList.addEventListener("click", () => {
   doneList.classList.add("active");
   addTaskBtn.classList.add("hidden");
   if (done.length > taskListDone.getElementsByTagName("li").length) {
-    addDoneTask();
+    addDoneTask(done);
   }
   if (taskListDone.getElementsByTagName("li").length < 3) {
     loadMoreContainer.classList.add("invisible");
@@ -131,26 +132,45 @@ loadMore.addEventListener("click", function (e) {
   }
 });
 
+let removedItems = 0;
+
 document.addEventListener("click", function (e) {
+  console.log(e.target.id);
   for (let i = 0; i <= count; i++) {
     if (e.target && e.target.id == `delete-btn-${i}`) {
       // todo.splice(i - 1, i);
       e.target.parentNode.parentElement.remove();
-      todo.splice(i, 1);
-      done.splice(i - 1, 1);
+      if (removedItems > 0) {
+        todo.splice(i, 1);
+        done.splice(i - 1, 1);
+      } else {
+        todo.splice(i - removedItems, 1);
+        done.splice(i - removedItems - 1, 1);
+      }
       localStorage.setItem("todo", JSON.stringify(todo));
       localStorage.setItem("done", JSON.stringify(done));
-    }
-    if (e.target && e.target.id == `done-btn-${i}`) {
+      removedItems++;
+    } else if (e.target && e.target.id == `done-btn-${i}`) {
+      console.log(removedItems);
+      console.log(`ran for i = ${i}`);
       e.target.parentNode.parentElement.remove();
-      console.log(todo);
-      done.push(todo[i]);
-      todo.splice(i - 1, i);
+      // problem
+      if (removedItems > 0) {
+        done.push(todo[i - removedItems]);
+        console.log(todo[i - removedItems]);
+        if (i - removedItems === 0) {
+          todo = todo.shift();
+        } else {
+          todo = todo.splice(i - removedItems - 1, 1);
+        }
+      } else {
+        done.push(todo[i]);
+        todo = todo.splice(i - 1, 1);
+      }
       localStorage.setItem("done", JSON.stringify(done));
-      todo.splice(i, 1);
-      localStorage.setItem("todo", JSON.stringify(todo));
-      console.log(done);
       console.log(todo);
+      localStorage.setItem("todo", JSON.stringify(todo));
+      removedItems++;
     }
   }
 });
