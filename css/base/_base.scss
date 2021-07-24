@@ -10,6 +10,8 @@ html {
 }
 
 body {
+  background-color: var(--clr-background);
+  color: var(--clr-black);
   font-family: "Poppins", sans-serif;
   font-size: 1.6rem;
   min-height: 100vh;

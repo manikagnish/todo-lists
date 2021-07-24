@@ -1,4 +1,5 @@
 :root {
+  --clr-background: hsl(0, 0%, 100%);
   --clr-white: hsl(0, 0%, 100%);
   --clr-black: hsl(0, 0%, 3%);
   --clr-primary: hsl(180, 82%, 41%);
@@ -13,6 +14,15 @@
   --clr-grey-dark: hsl(120, 2%, 53%);
   --clr-grey-alpha: hsla(120, 2%, 63%, 0.5);
   --clr-grey-light: hsl(120, 2%, 88%);
+  --clr-shadow: hsla(0, 0%, 0%, 0.2);
+  --clr-footer: hsl(235, 10%, 11%);
+}
+
+.dark {
+  --clr-background: hsl(198, 56%, 4%);
+  --clr-black: hsl(0, 0%, 89%);
+  --clr-primary-dark: hsl(180, 60%, 20%);
+  --clr-shadow: hsla(0, 0%, 100%, 0.2);
   --clr-footer: hsl(235, 10%, 11%);
 }
 
@@ -30,6 +40,8 @@ html {
 }
 
 body {
+  background-color: var(--clr-background);
+  color: var(--clr-black);
   font-family: "Poppins", sans-serif;
   font-size: 1.6rem;
   min-height: 100vh;
@@ -252,6 +264,16 @@ body {
   margin-top: 2.5rem;
 }
 
+.main__task-list {
+  -webkit-box-shadow: 0 1px 7px var(--clr-shadow);
+          box-shadow: 0 1px 7px var(--clr-shadow);
+}
+
+.main__task-list.dark {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .main__add-task {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -290,12 +312,21 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-bottom: 2rem;
-  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.253)), to(rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0));
 }
 
 .main__task-card--primary {
   background: var(--clr-primary-dark);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.main__task-card--primary.dark {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#073131), to(var(--clr-primary-dark)));
+  background-image: linear-gradient(to bottom right, #073131, var(--clr-primary-dark));
 }
 
 .main__input-container {
@@ -345,6 +376,18 @@ body {
 .nav {
   background-color: var(--clr-primary);
   padding: 1rem 0;
+}
+
+.nav__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .nav .logo {

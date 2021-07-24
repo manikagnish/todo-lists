@@ -17,12 +17,16 @@
     />
     <link rel="stylesheet" href="css/main.css" />
     <script src="index.js" defer></script>
+    <script src="darkMode.js" defer></script>
     <title>Lists</title>
   </head>
   <body>
     <header>
       <nav class="nav">
-        <a href="#" class="logo ml-lg"><i class="far fa-file-alt"></i> Lists</a>
+        <div class="nav__container ml-lg mr-lg">
+          <a href="#" class="logo"><i class="far fa-file-alt"></i> Lists</a>
+          <button id="dark-mode-btn">darkMode</button>
+        </div>
       </nav>
       <ul class="breadcrumb ml-lg">
         <li><a href="#" class="active" id="todo-list">Todo</a></li>

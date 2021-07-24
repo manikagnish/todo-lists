@@ -1,6 +1,13 @@
 .main {
   margin-top: 2.5rem;
 
+  &__task-list {
+    box-shadow: 0 1px 7px var(--clr-shadow);
+  }
+  &__task-list.dark {
+    box-shadow: none;
+  }
+
   &__add-task {
     display: flex;
     align-items: center;
@@ -29,7 +36,12 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.253),
+      rgba(255, 255, 255, 0)
+    );
 
     // @include desktop {
     //   width: 80%;
@@ -44,6 +56,15 @@
     // );
 
     background: var(--clr-primary-dark);
+    box-shadow: none;
+  }
+
+  &__task-card--primary.dark {
+    background-image: linear-gradient(
+      to bottom right,
+      hsl(180, 76%, 11%),
+      var(--clr-primary-dark)
+    );
   }
 
   &__input-container {

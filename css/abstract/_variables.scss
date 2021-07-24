@@ -1,4 +1,6 @@
 :root {
+  --clr-background: hsl(0, 0%, 100%);
+
   --clr-white: hsl(0, 0%, 100%);
   --clr-black: hsl(0, 0%, 3%);
 
@@ -17,6 +19,21 @@
   --clr-grey-dark: hsl(120, 2%, 53%);
   --clr-grey-alpha: hsla(120, 2%, 63%, 0.5);
   --clr-grey-light: hsl(120, 2%, 88%);
+
+  --clr-shadow: hsla(0, 0%, 0%, 0.2);
+
+  --clr-footer: hsl(235, 10%, 11%);
+}
+
+.dark {
+  --clr-background: hsl(198, 56%, 4%);
+
+  --clr-black: hsl(0, 0%, 89%);
+
+  // --clr-primary: hsl(235, 10%, 11%);
+  --clr-primary-dark: hsl(180, 60%, 20%);
+
+  --clr-shadow: hsla(0, 0%, 100%, 0.2);
 
   --clr-footer: hsl(235, 10%, 11%);
 }
